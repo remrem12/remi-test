@@ -3,16 +3,29 @@ import {
   CloudUploadOutlined,
   ReloadOutlined,
 } from "@ant-design/icons";
-import { Form, Button, Input, Card } from "antd";
+import { Form, Button, Input, Card, message } from "antd";
 import { useNavigate } from "react-router";
 import Layout from "../../components/Layout";
+import { MovieType } from "../../types/movie";
+import { collection, addDoc } from "firebase/firestore";
+import { db } from "../../firebase";
 
 const Share = () => {
   const [form] = Form.useForm();
   const navigate = useNavigate();
 
-  const onFinish = (values: any) => {
-    console.log(values);
+  const onFinish = async (values: MovieType) => {
+    addDoc(collection(db, "movies"), {
+      ...values,
+      sharedAt: Date.now(),
+    })
+      .then(() => {
+        message.success("Share movie successfully! 🎉🎉🎉");
+        form.resetFields();
+      })
+      .catch(() => {
+        message.error("Something went wrong! 🥲");
+      });
   };
 
   const handleClear = () => {
@@ -26,7 +39,7 @@ const Share = () => {
   return (
     <Layout>
       <div style={{ width: 500, margin: "40px auto" }}>
-        <Card title="Share movie">
+        <Card title="Share movie" hoverable>
           <Form
             form={form}
             name="share-form"

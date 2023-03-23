@@ -1,15 +1,11 @@
 import { Row, Col } from "antd";
+import { MovieType } from "../../types/movie";
 
-type MovieType = {
-  movie: {
-    title: string;
-    url: string;
-    sharedBy: string;
-    description: string;
-  };
+type MoviePropsType = {
+  movie: MovieType;
 };
 
-const MovieItem = ({ movie }: MovieType) => {
+const MovieItem = ({ movie }: MoviePropsType) => {
   const { title, url, description, sharedBy } = movie;
 
   return (
@@ -19,7 +15,7 @@ const MovieItem = ({ movie }: MovieType) => {
           <iframe
             width="300"
             height="180"
-            src="https://www.youtube.com/embed/kAUB220lT-w"
+            src={url}
             title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           />
