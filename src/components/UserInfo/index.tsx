@@ -1,15 +1,24 @@
-import React from "react";
 import { Button } from "antd";
+import { useNavigate } from "react-router-dom";
 
 type UserInfoType = {
   email: string;
 };
 
 const UserInfo = ({ email }: UserInfoType) => {
+  const navigate = useNavigate();
+
   return (
-    <div>
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        gap: 10,
+        margin: "0 20px",
+      }}
+    >
       <div>Welcome {email}</div>
-      <Button>Share a movie</Button>
+      <Button onClick={() => navigate("/share")}>Share a movie</Button>
     </div>
   );
 };

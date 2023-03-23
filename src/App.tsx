@@ -1,7 +1,6 @@
-import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./App.css";
-import Header from "./components/Header";
+import { UserContextProvider } from "./contexts/user";
 import Home from "./pages/Home";
 import Share from "./pages/Share";
 
@@ -19,8 +18,9 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
-      <RouterProvider router={router} />
+      <UserContextProvider>
+        <RouterProvider router={router} />
+      </UserContextProvider>
     </div>
   );
 }

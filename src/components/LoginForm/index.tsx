@@ -1,5 +1,7 @@
-import React from "react";
 import { Form, Input, Button, Row, Col } from "antd";
+import { useContext } from "react";
+import { UserContext } from "../../contexts/user";
+import UserInfo from "../UserInfo";
 
 type userInfoType = {
   email: string;
@@ -7,13 +9,20 @@ type userInfoType = {
 };
 
 const LoginForm = () => {
+  const { email, handleLogin, handleLogout } = useContext(UserContext);
+
   const onFinish = (values: userInfoType) => {
-    console.log(values);
+    handleLogin(values.email);
   };
 
-  return (
+  return email ? (
+    <div style={{ display: "flex" }}>
+      <UserInfo email={email} />
+      <Button onClick={handleLogout}>Logout</Button>
+    </div>
+  ) : (
     <Form
-      name="basic"
+      name="login-form"
       wrapperCol={{ span: 24 }}
       style={{ maxWidth: 600 }}
       initialValues={{ remember: true }}

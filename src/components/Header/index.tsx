@@ -1,4 +1,3 @@
-import React from "react";
 import LoginForm from "../LoginForm";
 import { Row, Col } from "antd";
 import { HomeFilled } from "@ant-design/icons";
