@@ -5,7 +5,7 @@ import { HomeFilled } from "@ant-design/icons";
 const Header = () => {
   return (
     <Row align="middle">
-      <Col span={10} offset={2}>
+      <Col span={9} offset={3}>
         <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
           <HomeFilled style={{ fontSize: 36 }} /> <h1>Funny Movies</h1>
         </div>
