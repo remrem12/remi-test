@@ -1,25 +1,27 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
+import ProtectedRoute from "./components/ProtectedRoute";
 import { UserContextProvider } from "./contexts/user";
 import Home from "./pages/Home";
 import Share from "./pages/Share";
 
 function App() {
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <Home />,
-    },
-    {
-      path: "/share",
-      element: <Share />,
-    },
-  ]);
-
   return (
     <div className="App">
       <UserContextProvider>
-        <RouterProvider router={router} />
+        <BrowserRouter>
+          <Routes>
+            <Route index element={<Home />} />
+            <Route
+              path="share"
+              element={
+                <ProtectedRoute>
+                  <Share />
+                </ProtectedRoute>
+              }
+            />
+          </Routes>
+        </BrowserRouter>
       </UserContextProvider>
     </div>
   );

@@ -6,10 +6,15 @@ type MoviePropsType = {
 };
 
 const MovieItem = ({ movie }: MoviePropsType) => {
-  const { title, url, description, sharedBy } = movie;
+  const { title, url, description, sharedBy, sharedAt = 0 } = movie;
+
+  const formatDate = (sharedAt: number) => {
+    const date = new Date(sharedAt);
+    return date.getDate() + "-" + date.getMonth() + "-" + date.getFullYear();
+  };
 
   return (
-    <Row gutter={8}>
+    <Row gutter={8} style={{ padding: 16 }}>
       <Col span={10}>
         <div style={{ textAlign: "right" }}>
           <iframe
@@ -23,10 +28,13 @@ const MovieItem = ({ movie }: MoviePropsType) => {
       </Col>
       <Col span={13} offset={1}>
         <div style={{ textAlign: "left" }}>
-          <h3>{title}</h3>
-          <span>Shared by: {sharedBy}</span>
-          <p>Description:</p>
-          <span>{description}</span>
+          <h2 style={{ margin: "0 0 10px", color: "#ff4d4f" }}>{title}</h2>
+          <p style={{ margin: "0 0 10px" }}>Shared by: {sharedBy}</p>
+          <p style={{ margin: "0 0 10px" }}>
+            Shared at: {formatDate(sharedAt)}
+          </p>
+          <p style={{ margin: 0 }}>Description:</p>
+          <p style={{ margin: 0 }}>{description}</p>
         </div>
       </Col>
     </Row>

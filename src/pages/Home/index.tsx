@@ -4,6 +4,7 @@ import MovieItem from "../../components/MovieItem";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../firebase";
 import { ResponseMovieType } from "../../types/movie";
+import { Empty } from "antd";
 
 const Home = () => {
   const [movieList, setMovieList] = useState<ResponseMovieType[]>([]);
@@ -14,7 +15,6 @@ const Home = () => {
         ...doc.data(),
         id: doc.id,
       }));
-      console.log(newData);
       setMovieList(newData);
     });
   };
@@ -25,11 +25,14 @@ const Home = () => {
 
   return (
     <Layout>
-      <div style={{ width: "70%", margin: "auto", padding: 30 }}>
-        {!!movieList.length &&
+      <div style={{ width: "70%", margin: "40px auto 0", padding: 30 }}>
+        {movieList.length !== 0 ? (
           movieList.map((movie: ResponseMovieType) => (
             <MovieItem key={movie.id} movie={movie} />
-          ))}
+          ))
+        ) : (
+          <Empty />
+        )}
       </div>
     </Layout>
   );

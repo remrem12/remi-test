@@ -9,15 +9,31 @@ import Layout from "../../components/Layout";
 import { MovieType } from "../../types/movie";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "../../firebase";
+import { useContext } from "react";
+import { UserContext } from "../../contexts/user";
 
 const Share = () => {
   const [form] = Form.useForm();
   const navigate = useNavigate();
+  const { email } = useContext(UserContext);
+
+  const formatUrl = (url: string) => {
+    // support youtube url and embed url
+    if (!url.includes("embed")) {
+      let path = url.split("?v=")[1];
+      let id = path.split("&")[0];
+      return `https://www.youtube.com/embed/${id}`;
+    } else {
+      return url;
+    }
+  };
 
   const onFinish = async (values: MovieType) => {
     addDoc(collection(db, "movies"), {
       ...values,
+      url: formatUrl(values.url),
       sharedAt: Date.now(),
+      shareBy: email,
     })
       .then(() => {
         message.success("Share movie successfully! 🎉🎉🎉");
