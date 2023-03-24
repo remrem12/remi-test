@@ -1,10 +1,9 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 const firebaseConfig = {
-  apiKey: "AIzaSyCo63hDXAKGAaRQ1h_0pn8gywy38Y0rfds",
+  apiKey: process.env.FIREBASE_API_KEY,
   authDomain: "remi-test-eade4.firebaseapp.com",
-  databaseURL:
-    "https://remi-test-eade4-default-rtdb.asia-southeast1.firebasedatabase.app",
+  databaseURL: process.env.FIREBASE_DB_URL,
   projectId: "remi-test-eade4",
   storageBucket: "remi-test-eade4.appspot.com",
   messagingSenderId: "460948838787",
