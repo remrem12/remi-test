@@ -30,12 +30,16 @@ const MovieItem = ({ movie }: MoviePropsType) => {
       </Col>
       <Col span={13} offset={1}>
         <div style={{ textAlign: "left" }}>
-          <h2 style={{ margin: "0 0 10px", color: "#ff4d4f" }}>{title}</h2>
-          <p style={{ margin: "0 0 10px" }}>Shared by: {sharedBy}</p>
-          <p style={{ margin: "0 0 10px" }}>
-            Shared at: {formatDate(sharedAt)}
+          <h2 style={{ margin: "0 0 8px", color: "#ff4d4f" }}>{title}</h2>
+          <p style={{ margin: "0 0 8px" }}>
+            <b>Shared by:</b> {sharedBy}
           </p>
-          <p style={{ margin: 0 }}>Description:</p>
+          <p style={{ margin: "0 0 8px" }}>
+            <b>Shared at:</b> {formatDate(sharedAt)}
+          </p>
+          <p style={{ margin: 0 }}>
+            <b>Description:</b>
+          </p>
           <p style={{ margin: 0 }}>{description}</p>
         </div>
       </Col>

@@ -87,7 +87,7 @@ const ShareForm = () => {
       <Form.Item wrapperCol={{ span: 24 }}>
         <div style={{ display: "flex", gap: 10, justifyContent: "flex-end" }}>
           <Button danger onClick={handleBack}>
-            <ArrowLeftOutlined /> Back
+            <ArrowLeftOutlined /> Back to Home
           </Button>
           <Button onClick={handleClear}>
             <ReloadOutlined /> Clear

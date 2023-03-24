@@ -18,7 +18,9 @@ const LoginForm = () => {
   return email ? (
     <div style={{ display: "flex" }}>
       <UserInfo email={email} />
-      <Button onClick={handleLogout}>Logout</Button>
+      <Button danger onClick={handleLogout}>
+        Logout
+      </Button>
     </div>
   ) : (
     <Form

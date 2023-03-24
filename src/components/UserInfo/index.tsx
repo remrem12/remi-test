@@ -17,7 +17,9 @@ const UserInfo = ({ email }: UserInfoType) => {
         margin: "0 20px",
       }}
     >
-      <div>Welcome {email}</div>
+      <div>
+        Welcome <b>{email}</b>{" "}
+      </div>
       <Button onClick={() => navigate("/share")}>Share a movie</Button>
     </div>
   );
