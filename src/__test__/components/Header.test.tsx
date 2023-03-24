@@ -4,7 +4,7 @@ import Header from "../../components/Header";
 import "@testing-library/jest-dom";
 
 describe("Header", () => {
-  it("should show a h1 with the text 'Funny Movies'", () => {
+  test("should show a h1 with the text 'Funny Movies'", () => {
     manualMock();
     render(<Header />);
     const text = screen.getByText("Funny Movies");

@@ -14,7 +14,7 @@ describe("LoginForm", () => {
     handleLogoutMock.mockClear();
   });
 
-  it("should show the login form when user is not logged in", () => {
+  test("should show the login form when user is not logged in", () => {
     manualMock();
     render(
       <UserContext.Provider
@@ -33,7 +33,7 @@ describe("LoginForm", () => {
     expect(screen.getByText("Login/Register")).toBeInTheDocument();
   });
 
-  it("should show the logout button when user is logged in", () => {
+  test("should show the logout button when user is logged in", () => {
     manualMock();
     render(
       <UserContext.Provider

@@ -11,7 +11,7 @@ const movie = {
   description: "Movie's description",
 };
 describe("Movie", () => {
-  it("renders an iframe with the right attributes", () => {
+  test("renders an iframe with the right attributes", () => {
     manualMock();
     render(<MovieItem movie={movie} />);
     const iframe = screen.getByTitle("YouTube video player");
@@ -25,7 +25,7 @@ describe("Movie", () => {
     );
   });
 
-  it("renders the movie info", () => {
+  test("renders the movie info", () => {
     manualMock();
     render(<MovieItem movie={movie} />);
     const title = screen.getByText("Unit test movie title");
