@@ -16,7 +16,7 @@ const MovieItem = ({ movie }: MoviePropsType) => {
   };
 
   return (
-    <Row gutter={8} style={{ padding: 16 }}>
+    <Row gutter={8} style={{ padding: 16 }} data-testid="movie-item">
       <Col span={10}>
         <div style={{ textAlign: "right" }}>
           <iframe
