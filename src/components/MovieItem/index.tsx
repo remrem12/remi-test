@@ -10,7 +10,9 @@ const MovieItem = ({ movie }: MoviePropsType) => {
 
   const formatDate = (sharedAt: number) => {
     const date = new Date(sharedAt);
-    return date.getDate() + "-" + date.getMonth() + "-" + date.getFullYear();
+    return (
+      date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear()
+    );
   };
 
   return (

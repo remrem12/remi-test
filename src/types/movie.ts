@@ -2,8 +2,8 @@ export type MovieType = {
   title: string;
   url: string;
   sharedBy: string;
-  description: string;
   sharedAt?: number;
+  description: string;
 };
 
 export interface ResponseMovieType extends MovieType {

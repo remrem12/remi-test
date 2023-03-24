@@ -33,7 +33,7 @@ const Share = () => {
       ...values,
       url: formatUrl(values.url),
       sharedAt: Date.now(),
-      shareBy: email,
+      sharedBy: email,
     })
       .then(() => {
         message.success("Share movie successfully! 🎉🎉🎉");
